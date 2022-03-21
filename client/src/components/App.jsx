@@ -1,5 +1,4 @@
 import React, {useContext} from 'react';
-import axios from 'axios';
 import SearchBar from './searchBar.jsx';
 import TeamList from './teamListComp/teamList.jsx';
 import SidePanel from './sidePanel.jsx';
