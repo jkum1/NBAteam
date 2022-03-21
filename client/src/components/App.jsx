@@ -1,24 +1,38 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import axios from 'axios';
 import SearchBar from './searchBar.jsx';
 import TeamList from './teamListComp/teamList.jsx';
+import SidePanel from './sidePanel.jsx';
+import {NbaContext, NbaContextProvider} from './nbaContext.jsx';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+const App = () => {
+  return (
+    <NbaContextProvider>
+      <Page />
+    </NbaContextProvider>
+  );
+};
 
-    };
-  }
-
-  render() {
+const Page = () => {
+  const user = useContext(NbaContext);
+  if (user.choseTeam) {
+    return (
+      <div className="container">
+        <div className="title">NBA TEAMS</div>
+        <SearchBar/>
+        <TeamList/>
+        <SidePanel/>
+      </div>
+    );
+  } else {
     return (
       <div className="container">
         <div className="title">NBA TEAMS</div>
         <SearchBar/>
         <TeamList/>
       </div>
-    )
+    );
   }
-}
+};
 
 export default App;
