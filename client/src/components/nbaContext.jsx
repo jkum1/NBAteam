@@ -7,6 +7,7 @@ const NbaContextProvider = ({children}) => {
   const [choseTeam, setChoseTeam] = useState(false);
   const [test, setTest] = useState(true);
   const [allTeams, setAllTeams] = useState([]);
+  const [contextValue, setContextValue] = useState({});
 
   useEffect(() => {
     let mounted = true;
@@ -27,13 +28,19 @@ const NbaContextProvider = ({children}) => {
     };
   }, [choseTeam]);
 
-  const contextValue = useMemo(() => {
-    return {
-      choseTeam: choseTeam,
-      allTeams: allTeams,
-      test: test
+  useEffect(() => {
+    let mounted = true;
+    if (mounted) {
+      setContextValue({
+        choseTeam: choseTeam,
+        test: test,
+        allTeams: allTeams
+      })
     }
-  }, [choseTeam, test])
+    return function cleanup() {
+      mounted = false;
+    }
+  }, [choseTeam, test, allTeams]);
 
   return (
     <NbaContext.Provider value={contextValue}>
