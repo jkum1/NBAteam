@@ -47,7 +47,6 @@ const NbaContextProvider = ({children}) => {
   }, [choseTeam]);
 
   useEffect(() => {
-    console.log('render');
     let mounted = true;
     if (mounted) {
       setContextValue({
