@@ -2,7 +2,7 @@ import React from 'react';
 
 function SearchBar(props) {
   return (
-    <div>
+    <div className="searchBar">
       <div>This is the List</div>
     </div>
   )
