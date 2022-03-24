@@ -19,6 +19,22 @@ app.get('/teams', (req, res) => {
     });
 });
 
+app.get('/game', (req, res) => {
+  const id = req.query.id;
+  const season = 'seasons[]';
+  const teamId = 'team_id[]'
+  axios.get('https://www.balldontlie.io/api/v1/games', {params: {season: 2021, teamId: id}})
+    .then((data, err) => {
+      if (err) {
+        throw err;
+      }
+      res.send(data.data);
+    })
+    .catch((err) => {
+      res.send(err);
+    })
+});
+
 app.listen(PORT, () => {
   console.log(`Server listening on port: ${PORT}`);
 })
