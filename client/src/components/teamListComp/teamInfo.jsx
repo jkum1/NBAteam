@@ -13,13 +13,12 @@ function TeamInfo(props) {
     } else {
       setChosen(true);
     }
-    console.log('logged');
   }
 
   var oneRow;
   if (chosen) {
     oneRow =
-      <div className="entryChosen" value={props.teamInfo.id} onClick={(e) => {props.handleTeam(props.teamInfo.id, e); handleClick}}>
+      <div className="entryChosen" value={props.teamInfo.id} onClick={(e) => {props.handleTeam(props.teamInfo.id, e); handleClick(e)}}>
         <div className="full_name">{props.teamInfo.full_name}</div>
         <div className="city">{props.teamInfo.city}</div>
         <div className="abb">{props.teamInfo.abbreviation}</div>
@@ -28,7 +27,7 @@ function TeamInfo(props) {
       </div>;
   } else {
     oneRow =
-    <div className="entry" value={props.teamInfo.id} onClick={(e) => {props.handleTeam(props.teamInfo.id, e); handleClick}}>
+    <div className="entry" value={props.teamInfo.id} onClick={(e) => {props.handleTeam(props.teamInfo.id, e); handleClick(e)}}>
       <div className="full_name">{props.teamInfo.full_name}</div>
       <div className="city">{props.teamInfo.city}</div>
       <div className="abb">{props.teamInfo.abbreviation}</div>

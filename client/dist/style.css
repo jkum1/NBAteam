@@ -34,6 +34,41 @@ body {
   flex-direction: column;
 }
 
+.list {
+  display: flex;
+  gap: 25px;
+  flex-direction: column;
+}
+
+.sidePanel {
+  position: absolute;
+  background-color: white;
+  right: 0;
+  top: 0;
+  width: 35%;
+  display: flex;
+  font-size: 25px;
+  gap: 20px;
+  flex-direction: column;
+  align-content: space-around;
+}
+
+.titleSide {
+  font-weight: bold;
+  left: 100px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background-color: rgb(202, 200, 200);
+}
+
+.sidePanelExit {
+  grid-column: 4/5;
+  justify-content: left;
+  font-weight: bold;
+  background-color: rgb(202, 200, 200);
+  border: none;
+}
+
 .entry {
   display: grid;
   grid-template-columns: repeat(5, 1fr);

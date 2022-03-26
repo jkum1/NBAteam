@@ -47,15 +47,21 @@ const App = () => {
     };
   }, []);
 
-  useEffect(() => {
-    let mounted = true;
-    axios.get("http://localhost:3000/game", {params: {id: choseTeam}})
+  function handleTeamChange(team_id) {
+    axios.get("http://localhost:3000/game", {params: {id: team_id}})
       .then((data, err) => {
         if (err) {
           throw err;
         } else {
+          var teamFull = data.data.data[0].home_team.full_name;
+          var team = data.data.data[0].home_team.name;
+          if (team_id !== data.data.data[0].home_team.id) {
+            team = data.data.data[0].visitor_team.name;
+            teamFull = data.data.data[0].visitor_team.full_name;
+          }
           var temp = {
-            teamName: data.data.data[0].home_team.full_name,
+            teamName: team,
+            teamFullName: teamFull,
             totalGames: data.data.data.length,
             date: data.data.data[0].date,
             homeTeam: data.data.data[0].home_team.name,
@@ -66,16 +72,16 @@ const App = () => {
           setGameInfo(temp);
         }
       })
+      .then(() => {
+        setChoseTeam(team_id);
+      })
       .catch((err) => {
         console.log("ClientSide req to Server for one team game stats went wrong");
-      })
-    return function cleanup() {
-      mounted = false;
-    };
-  }, [choseTeam]);
+      });
+  }
 
-  function handleTeamChange(id) {
-    setChoseTeam(id);
+  function handleExit() {
+    setChoseTeam(0);
   }
 
   return (
@@ -83,7 +89,7 @@ const App = () => {
         <div className="title">NBA TEAMS</div>
         <SearchBar/>
         <TeamList pageTeam={pageTeam[pageNum]} pageNum={pageNum} handleTeam={handleTeamChange}/>
-        <SidePanel gameInfo={gameInfo} choseTeam={choseTeam}/>
+        <SidePanel gameInfo={gameInfo} choseTeam={choseTeam} handleTeam={handleExit}/>
     </div>
   );
 }

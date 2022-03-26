@@ -21,9 +21,17 @@ app.get('/teams', (req, res) => {
 
 app.get('/game', (req, res) => {
   const id = req.query.id;
-  const season = 'seasons[]';
-  const teamId = 'team_id[]'
-  axios.get('https://www.balldontlie.io/api/v1/games', {params: {season: 2021, teamId: id}})
+  if (req.query.id === 0) {
+    id = 1;
+  }
+  const season = "seasons[]";
+  const teamId = "team_ids[]";
+  axios.get('https://www.balldontlie.io/api/v1/games', {
+    params: {
+      [season]: 2021,
+      [teamId]: id
+    }
+  })
     .then((data, err) => {
       if (err) {
         throw err;

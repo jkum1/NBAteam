@@ -7,7 +7,7 @@ function TeamList(props) {
   if (props.pageTeam) {
     list =
     <div className="teamList">
-      <div>{props.pageTeam.map((teamInfo, i) =>
+      <div className='list'>{props.pageTeam.map((teamInfo, i) =>
         <TeamInfo key={i} teamInfo={teamInfo} handleTeam={props.handleTeam}/>
       )}
       </div>
