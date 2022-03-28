@@ -10,6 +10,7 @@ const App = () => {
   const [allTeams, setAllTeams] = useState([]);
   const [pageNum, setPageNum] = useState(0);
   const [gameInfo, setGameInfo] = useState([]);
+  const [sort, setSort] = useState(true);
 
   useEffect(() => {
     let mounted = true;
@@ -84,11 +85,19 @@ const App = () => {
     setChoseTeam(0);
   }
 
+  function handleCity() {
+    setSort(!sort);
+  }
+
+  function handleNum(event, num) {
+    setPageNum(num);
+  }
+
   return (
     <div className="container">
         <div className="title">NBA TEAMS</div>
         <SearchBar/>
-        <TeamList pageTeam={pageTeam[pageNum]} pageNum={pageNum} handleTeam={handleTeamChange}/>
+        <TeamList pageTeam={pageTeam[pageNum]} sorted={sort} handleSort={handleCity} pageNum={pageNum} handleTeam={handleTeamChange} pageTeamsQ={pageTeam?.length - 1} handleNum={handleNum}/>
         <SidePanel gameInfo={gameInfo} choseTeam={choseTeam} handleTeam={handleExit}/>
     </div>
   );
