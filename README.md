@@ -28,7 +28,7 @@ npm run server-dev
 ```
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Funcitonality
+## Functionality
 *****************
 1. Displays Nba team data (7 per page)
 2. Can sort Alphabetically by City name
@@ -38,12 +38,17 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Future Improvements
 *******************
 1. Bug where exiting the side panel still highlights the selected team row
+***********
     Can be fixed by reorgainizing how the (isSelected) hook is stored and changed per row
-2. Write some unti tests
+2. Write some unit tests
+**********
     Can probably predit some async issues
 3. Better unit management
+*********
     Can orgainze the teamList sectionm better by breaking up the pageNum and teamList sections into separate jsx files
 4. Better styling
+********
     Can definietly improve on better css styling.
 5. Search bar implementation
+*********
     Would do by storing an array of all NBA teams and converyting it into a prefix tree with ids stored as leaves.
