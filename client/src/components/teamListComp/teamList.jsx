@@ -52,11 +52,13 @@ function TeamList(props) {
       )}
       </div>
       <div className="pageNum">
+        <div className="pageNumScroll">
         <button className="scroll" onClick={(e) => handleSide(e, true)}>{"<"}</button>
         {pageNumArr.map((num, i) =>
           <div className="numScroll" key={i} onClick={(e) => props.handleNum(e, num - 1)}>{num}</div>
         )}
         <button className="scroll" onClick={(e) => handleSide(e, false)}>{">"}</button>
+        </div>
       </div>
     </div>;
   }

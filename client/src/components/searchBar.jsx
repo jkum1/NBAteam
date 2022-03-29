@@ -3,7 +3,7 @@ import React from 'react';
 function SearchBar(props) {
   return (
     <div className="searchBar">
-      <div>This is the List</div>
+      <div>Search Bar</div>
     </div>
   )
 }
